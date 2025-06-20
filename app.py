@@ -11,9 +11,10 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS
+# Custom CSS with improved sidebar styling
 st.markdown("""
 <style>
+    /* Main styling */
     .main-header {
         text-align: center;
         padding: 2rem 0;
@@ -63,6 +64,153 @@ st.markdown("""
         padding: 1rem;
         margin: 1rem 0;
         border-radius: 5px;
+        color: #1565c0;
+    }
+    
+    /* Sidebar specific styling */
+    .css-1d391kg {
+        background-color: #2e3440 !important;
+    }
+    
+    .css-1lcbmhc {
+        background-color: #2e3440 !important;
+    }
+    
+    /* Sidebar text styling */
+    .css-1d391kg .css-10trblm {
+        color: #eceff4 !important;
+    }
+    
+    .css-1d391kg h1, 
+    .css-1d391kg h2, 
+    .css-1d391kg h3, 
+    .css-1d391kg h4, 
+    .css-1d391kg h5, 
+    .css-1d391kg h6 {
+        color: #eceff4 !important;
+    }
+    
+    .css-1d391kg p, 
+    .css-1d391kg li, 
+    .css-1d391kg span {
+        color: #d8dee9 !important;
+    }
+    
+    /* Sidebar button styling */
+    .css-1d391kg .stButton > button {
+        background-color: #5e81ac !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 8px !important;
+        padding: 0.5rem 1rem !important;
+        font-weight: 600 !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .css-1d391kg .stButton > button:hover {
+        background-color: #81a1c1 !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2) !important;
+    }
+    
+    /* Sidebar info boxes */
+    .css-1d391kg .info-box {
+        background-color: #3b4252 !important;
+        border-left: 4px solid #88c0d0 !important;
+        color: #eceff4 !important;
+    }
+    
+    .css-1d391kg .info-box h4 {
+        color: #88c0d0 !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .css-1d391kg .info-box ul, 
+    .css-1d391kg .info-box ol {
+        color: #d8dee9 !important;
+    }
+    
+    .css-1d391kg .info-box li {
+        color: #d8dee9 !important;
+        margin-bottom: 0.25rem !important;
+    }
+    
+    /* Sidebar divider */
+    .css-1d391kg hr {
+        border-color: #4c566a !important;
+        margin: 1.5rem 0 !important;
+    }
+    
+    /* Alternative sidebar selectors for different Streamlit versions */
+    .stSidebar {
+        background-color: #2e3440 !important;
+    }
+    
+    .stSidebar .stMarkdown {
+        color: #eceff4 !important;
+    }
+    
+    .stSidebar .stMarkdown h1, 
+    .stSidebar .stMarkdown h2, 
+    .stSidebar .stMarkdown h3, 
+    .stSidebar .stMarkdown h4 {
+        color: #eceff4 !important;
+    }
+    
+    .stSidebar .stMarkdown p, 
+    .stSidebar .stMarkdown li {
+        color: #d8dee9 !important;
+    }
+    
+    /* Dark theme info boxes in sidebar */
+    .sidebar-info-box {
+        background-color: #3b4252 !important;
+        border-left: 4px solid #88c0d0 !important;
+        padding: 1rem !important;
+        margin: 1rem 0 !important;
+        border-radius: 5px !important;
+        color: #eceff4 !important;
+    }
+    
+    .sidebar-info-box h4 {
+        color: #88c0d0 !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .sidebar-info-box ul, 
+    .sidebar-info-box ol {
+        color: #d8dee9 !important;
+        margin-left: 1rem !important;
+    }
+    
+    .sidebar-info-box li {
+        color: #d8dee9 !important;
+        margin-bottom: 0.25rem !important;
+    }
+    
+    /* Main content area improvements */
+    .stApp > header {
+        background-color: transparent !important;
+    }
+    
+    .stApp {
+        background-color: #fafafa !important;
+    }
+    
+    /* Button improvements */
+    .stButton > button {
+        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%) !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 8px !important;
+        padding: 0.5rem 1.5rem !important;
+        font-weight: 600 !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .stButton > button:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4) !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -95,20 +243,20 @@ def main():
     </div>
     """, unsafe_allow_html=True)
 
-    # Sidebar
+    # Sidebar with improved styling
     with st.sidebar:
-        st.header("🔧 Settings")
+        st.markdown('<h2 style="color: #eceff4; margin-bottom: 1rem;">🔧 Settings</h2>', unsafe_allow_html=True)
         
         # Initialize translator button
         if st.button("🚀 Initialize Translator", type="primary"):
             if initialize_translator():
                 st.success("✅ Translator initialized successfully!")
             
-        st.markdown("---")
+        st.markdown('<hr style="border-color: #4c566a; margin: 1.5rem 0;">', unsafe_allow_html=True)
         
-        # Information
+        # Information with dark theme
         st.markdown("""
-        <div class="info-box">
+        <div class="sidebar-info-box">
             <h4>📋 How to use:</h4>
             <ol>
                 <li>Click "Initialize Translator" first</li>
@@ -119,11 +267,11 @@ def main():
         </div>
         """, unsafe_allow_html=True)
         
-        st.markdown("---")
+        st.markdown('<hr style="border-color: #4c566a; margin: 1.5rem 0;">', unsafe_allow_html=True)
         
-        # Features
+        # Features with dark theme
         st.markdown("""
-        <div class="info-box">
+        <div class="sidebar-info-box">
             <h4>✨ Features:</h4>
             <ul>
                 <li>Legal terminology glossary</li>
